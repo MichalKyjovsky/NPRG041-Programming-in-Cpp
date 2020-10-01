@@ -1,3 +1,0 @@
-C:\Users\micha\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7319.72\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\arguments_calc.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\arguments_calc.dir/objects.a @CMakeFiles\arguments_calc.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\arguments_calc.dir/objects.a -Wl,--no-whole-archive  -o arguments_calc.exe -Wl,--out-implib,libarguments_calc.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\arguments_calc.dir\linklibs.rsp

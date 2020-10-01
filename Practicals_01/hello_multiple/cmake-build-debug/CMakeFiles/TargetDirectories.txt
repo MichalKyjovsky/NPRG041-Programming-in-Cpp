@@ -1,3 +1,0 @@
-D:/micha/MFF_UK/NPRG041/Practicals_01/hello_multiple/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/micha/MFF_UK/NPRG041/Practicals_01/hello_multiple/cmake-build-debug/CMakeFiles/hello_multiple.dir
-D:/micha/MFF_UK/NPRG041/Practicals_01/hello_multiple/cmake-build-debug/CMakeFiles/rebuild_cache.dir
