@@ -1,0 +1,3 @@
+D:/micha/MFF_UK/NPRG041/Practice_01/cmake-build-debug/CMakeFiles/Practice_01.dir
+D:/micha/MFF_UK/NPRG041/Practice_01/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/micha/MFF_UK/NPRG041/Practice_01/cmake-build-debug/CMakeFiles/rebuild_cache.dir

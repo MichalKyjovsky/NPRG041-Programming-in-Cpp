@@ -1,0 +1,3 @@
+D:/micha/MFF_UK/NPRG041/Practicals_01/arguments_sum/cmake-build-debug/CMakeFiles/arguments_sum.dir
+D:/micha/MFF_UK/NPRG041/Practicals_01/arguments_sum/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/micha/MFF_UK/NPRG041/Practicals_01/arguments_sum/cmake-build-debug/CMakeFiles/rebuild_cache.dir

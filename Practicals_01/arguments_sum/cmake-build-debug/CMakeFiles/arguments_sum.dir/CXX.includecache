@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/micha/MFF_UK/NPRG041/Practicals_01/arguments_sum/main.cpp
+iostream
+-
+vector
+-
+string
+-
+
