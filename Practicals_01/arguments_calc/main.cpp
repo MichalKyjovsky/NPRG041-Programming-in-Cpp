@@ -23,7 +23,7 @@ bool IsOperator(const char& func) {
     }
 }
 
-int OperatorPriority(const & func) {
+int OperatorPriority(const char & func) {
     if (func == '+' || func == '-') {
         return 1;
     } else if (func == '*' || func == '/') {
@@ -62,7 +62,7 @@ vector<string> ConvertToPostfix(string& expression) {
     }
     out_expression_arr.push_back(out_expression);
     while (operators_stack.top() != '#') {
-        out_expression_arr.push_back(string(1, operators_stack.top()));
+        out_expression_arr.emplace_back(1, operators_stack.top());
         operators_stack.pop();
     }
 
@@ -72,7 +72,7 @@ vector<string> ConvertToPostfix(string& expression) {
 int EvaluatePostfixExpression(const vector<string> &expression) {
     stack<int> values;
 
-    for (const string value: expression) {
+    for (const string& value: expression) {
         if (!IsOperator(value[0])) {
             values.push(stoi(value));
         } else {
