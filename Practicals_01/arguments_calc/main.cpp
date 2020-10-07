@@ -8,7 +8,7 @@ using namespace std;
 const string kNumericCharacters = "0123456789";
 const string kBinaryOperators = "+-*/";
 
-bool IsNumber(char& number) {
+bool IsNumber(char number) {
         if (kNumericCharacters.find(number) != string::npos) {
             return true;
         }
@@ -23,7 +23,7 @@ bool IsOperator(const char& func) {
     }
 }
 
-int OperatorPriority(char& func) {
+int OperatorPriority(const & func) {
     if (func == '+' || func == '-') {
         return 1;
     } else if (func == '*' || func == '/') {
@@ -39,7 +39,7 @@ vector<string> ConvertToPostfix(string& expression) {
     stack<char> operators_stack;
     operators_stack.push('#'); // Boundary
 
-    for (char c : expression) {
+    for (const char c : expression) {
         if (IsNumber(c)) {
             out_expression += c;
         } else if (IsOperator(c)) {
@@ -72,7 +72,7 @@ vector<string> ConvertToPostfix(string& expression) {
 int EvaluatePostfixExpression(const vector<string> &expression) {
     stack<int> values;
 
-    for (string value: expression) {
+    for (const string value: expression) {
         if (!IsOperator(value[0])) {
             values.push(stoi(value));
         } else {
