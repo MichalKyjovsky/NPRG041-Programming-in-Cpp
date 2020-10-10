@@ -28,6 +28,7 @@ void Matrix::set(int x, int y, int value) {
 
 
 void Matrix::print() {
+    this->normalize_matrix();
     for (auto &&  row : this->table) {
         std::cout << "[ ";
         for (auto && column_index : row ) {
@@ -45,6 +46,7 @@ void Matrix::copy_row(std::vector<int> &new_row, std::vector<int> &original_row)
 
 
 std::vector<int> &Matrix::get_row(int x) {
+    this->normalize_matrix();
     int matrix_size = this->table.size();
     if (x <= matrix_size) {
         return this->table[x];
@@ -57,10 +59,12 @@ std::vector<int> &Matrix::get_row(int x) {
 }
 
 std::vector<std::vector<int>> &Matrix::get_rows() {
+    this->normalize_matrix();
     return this->table;
 }
 
 std::vector<int> Matrix::get_column(int y) {
+    this->normalize_matrix();
     std::vector<int> output_column;
     for (auto && row : this->table) {
         output_column.push_back(row[y]);
@@ -69,13 +73,16 @@ std::vector<int> Matrix::get_column(int y) {
 }
 
 std::vector<std::vector<int>> Matrix::transpose_matrix() {
+    /* Matrix must be normalized before it comes here.*/
     std::vector<std::vector<int>> transposed_matrix;
     std::vector<int> column;
-    for (auto && row : this->table) {
-        for (int & i : row) {
-            column.push_back(i);
+
+    for (int i = 0; i < this->table[0].size(); i++) {
+        for (auto & row : this->table) {
+            column.push_back(row[i]);
         }
         transposed_matrix.push_back(column);
+        column.clear();
     }
     return transposed_matrix;
 }
@@ -112,6 +119,7 @@ int Matrix::get_matrix_width() {
 }
 
 std::vector<std::vector<int>> Matrix::get_columns() {
+    this->normalize_matrix();
     return this->transpose_matrix();
 }
 
@@ -120,6 +128,7 @@ void Matrix::clear() {
 }
 
 void Matrix::fill_with_value(int value) {
+    this->normalize_matrix();
     for(auto & row : this->table) {
         for (int & col_index : row) {
             col_index = value;
@@ -128,6 +137,7 @@ void Matrix::fill_with_value(int value) {
 }
 
 void Matrix::reverse() {
+    this->normalize_matrix();
     this->table = this->transpose_matrix();
 }
 
@@ -156,6 +166,7 @@ std::vector<int> Matrix::get_negative() {
 
 
 std::vector<int> Matrix::get_positive() {
+    this->normalize_matrix();
     std::vector<int> out_buffer;
     for(auto & row : this->table) {
         for (int & col_index : row) {
@@ -168,6 +179,7 @@ std::vector<int> Matrix::get_positive() {
 }
 
 int Matrix::zero_count() {
+    this->normalize_matrix();
     int zero_counter = 0;
     for(auto & row : this->table) {
         for (int & col_index : row) {

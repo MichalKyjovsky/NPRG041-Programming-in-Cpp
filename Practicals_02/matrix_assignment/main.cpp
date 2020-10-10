@@ -16,10 +16,15 @@ int main() {
     matrix.set(2,1,8);
     matrix.set(2,2,9);
 
-    matrix.print();
-    for (auto && elm : matrix.get_column(1)) {
-        std::cout << elm << std::endl;
-    }
+    matrix.set(3,2,10);
 
-    std::cout << matrix.is_negative() << std::endl;
+    matrix.print();
+//    for (auto && elm : matrix.get_column(1)) {
+//        std::cout << elm << std::endl;
+//    }
+
+    matrix.reverse();
+    matrix.print();
+
+//    std::cout << matrix.is_negative() << std::endl;
 }
