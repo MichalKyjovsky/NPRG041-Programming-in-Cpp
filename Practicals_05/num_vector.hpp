@@ -38,7 +38,7 @@ public:
         }
     }
 
-    std::size_t capacity();
+    std::size_t capacity() const;
 
     std::size_t size() const;
 
@@ -48,7 +48,7 @@ public:
 
     void resize(std::size_t count);
 
-    void print();
+    void print() const;
 };
 
 

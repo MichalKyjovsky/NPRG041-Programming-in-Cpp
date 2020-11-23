@@ -4,7 +4,7 @@
 
 #include "num_vector.hpp"
 
-std::size_t NumVector::capacity() {
+std::size_t NumVector::capacity() const {
     return this->current_capacity;
 }
 std::size_t NumVector::size() const {
@@ -57,7 +57,7 @@ void NumVector::resize(std::size_t count) {
 
 }
 
-void NumVector::print() {
+void NumVector::print() const {
     for (int i = 0; i < this->current_size; i++) {
         std::cout << this->vec_ptr[i] << std::endl;
     }
