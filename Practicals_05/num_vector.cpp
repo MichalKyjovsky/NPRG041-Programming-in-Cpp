@@ -14,14 +14,14 @@ std::size_t NumVector::size() const {
 void NumVector::reserve(std::size_t new_cap) {
     if (new_cap > this->current_size) {
         this->current_capacity = 2 * new_cap;
-        std::unique_ptr<int[]> temp = std::make_unique<int[]>( this->current_capacity);
+        std::unique_ptr<int[]> resized_num_vector = std::make_unique<int[]>(this->current_capacity);
 
         for (int i = 0; i < this->current_size; i++) {
-            temp[i] = this->vec_ptr[i];
+            resized_num_vector[i] = this->vec_ptr[i];
         }
 
         this->current_size = new_cap;
-        this->vec_ptr = std::move(temp);
+        this->vec_ptr = std::move(resized_num_vector);
     } else {
         std::cerr << "**ERROR**: Attempt to allocate less than you actually have!" << std::endl;
     }

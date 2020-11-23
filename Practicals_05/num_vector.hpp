@@ -16,16 +16,11 @@ class NumVector {
     std::unique_ptr<int[]> vec_ptr;
 
 public:
-    NumVector(std::size_t capacity) : current_capacity(2 * capacity) {
-        this->vec_ptr = std::make_unique<int[]>(this->current_capacity);
-        this->current_size = capacity;
-    }
+    NumVector(std::size_t capacity) : current_capacity(2 * capacity),
+                                      vec_ptr(std::make_unique<int[]>(this->current_capacity)),
+                                      current_size(capacity) { }
 
-    NumVector() {
-        this->current_capacity = 2;
-        this->current_size = 1;
-        this->vec_ptr = std::make_unique<int[]>(this->current_capacity);
-    }
+    NumVector() : current_size(0) , current_capacity(0), vec_ptr(std::make_unique<int[]>(this->current_capacity)) { }
 
     int &operator[](std::size_t idx) {
         if (idx < this->current_size) {
@@ -44,10 +39,15 @@ public:
     }
 
     std::size_t capacity();
+
     std::size_t size() const;
+
     void reserve(std::size_t new_cap);
+
     void push_back(int value);
+
     void resize(std::size_t count);
+
     void print();
 };
 
