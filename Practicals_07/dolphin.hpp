@@ -11,15 +11,14 @@
 class Dolphin : public Animal {
 private:
     std::string ocean;
-    std::shared_ptr<Dolphin> dolphin_ptr;
 
 public:
 
-    Dolphin (const std::string name, int age, std::string ocean) : Animal{age, name}, ocean{std::move(ocean)}, dolphin_ptr{std::make_shared<Dolphin>(*this)}  {}
+    Dolphin (const std::string name, int age, std::string ocean) : Animal{age, name}, ocean{std::move(ocean)}  {}
 
 
-    std::shared_ptr<Animal> get_animal() const override {
-        return this->dolphin_ptr;
+    std::unique_ptr<Animal> get_animal() const override {
+        return std::make_unique<Dolphin>(*this);
     }
 
     void print_animal() const override {

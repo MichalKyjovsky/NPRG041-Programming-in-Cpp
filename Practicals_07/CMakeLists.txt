@@ -3,4 +3,4 @@ project(Lecture_07)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(animal.hpp dolphin.hpp lion.hpp monkey.hpp zoo_vector.cpp zoo_vector.hpp main.cpp)
+add_executable(Lecture_07 main.cpp animal.hpp dolphin.hpp lion.hpp monkey.hpp zoo_vector.cpp zoo_vector.hpp)

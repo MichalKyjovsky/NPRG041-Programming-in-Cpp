@@ -12,15 +12,14 @@
 class Monkey : public Animal {
 private:
     std::string preferred_activity;
-    std::shared_ptr<Monkey> monkey_ptr;
 
 public:
 
-    Monkey (const std::string name, int age, std::string preferred_activity) : Animal{age, name}, preferred_activity{std::move(preferred_activity)}, monkey_ptr{std::make_shared<Monkey>(*this)} {}
+    Monkey (const std::string name, int age, std::string preferred_activity) : Animal{age, name}, preferred_activity{std::move(preferred_activity)} {}
 
 
-    std::shared_ptr<Animal> get_animal() const override {
-        return this->monkey_ptr;
+    std::unique_ptr<Animal> get_animal() const override {
+        return std::make_unique<Monkey>(*this);
     }
 
     void print_animal() const override {
