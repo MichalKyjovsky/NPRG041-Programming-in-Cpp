@@ -7,6 +7,8 @@
 
 void DataAggregator::aggregator_load_data() {
     this->aggregator_load_header();
+    std::cout << this->table_header.size() << std::endl;
+    std::cout << this->table_header.at(0) << std::endl;
     this->aggregator_load_data_types();
     this->aggregator_load_attributes_number();
     this->aggregator_load_number_of_records();
@@ -15,7 +17,8 @@ void DataAggregator::aggregator_load_data() {
 }
 
 DataAggregator::header_t DataAggregator::parse_table_header(const std::string& raw_header, char delimiter) {
-    return aggregator_parse_joined_line(raw_header, delimiter);
+//    return aggregator_parse_joined_line(raw_header, delimiter);
+    return {"Hello", "world"};
 }
 
 
@@ -37,9 +40,13 @@ std::vector<std::string> DataAggregator::aggregator_parse_joined_line(const std:
 
     std::istringstream token_stream(raw_line);
 
+//    std::cout << "RAW LINE: " << raw_line << std::endl;
+
     while (std::getline(token_stream, token, delimiter)) {
-        tokens.push_back(std::move(token));
+//        std::cout << "CURRENT TOKEN: " << token << std::endl;
+        tokens.push_back("Hello world");
     }
+
     return tokens;
 }
 

@@ -81,11 +81,13 @@ private:
 
     static header_t parse_table_header(std::istream &raw_header_stream) {
         std::string input_header_buffer;
-        raw_header_stream >> input_header_buffer;
+//        raw_header_stream >> std::ws >> input_header_buffer;
+
+        std::getline(raw_header_stream, input_header_buffer);
         return parse_table_header(input_header_buffer);
     }
 
-    static std::vector<std::string> aggregator_parse_joined_line(const std::string& raw_line, char delimiter = ';');
+    static std::vector<std::string> aggregator_parse_joined_line(const std::string & raw_line, char delimiter = ';');
 
 
     static type_specification_t
@@ -94,13 +96,13 @@ private:
     static type_specification_t
     parse_type_specification(std::istream &raw_type_specification_stream, char delimiter = ';') {
         std::string raw_type_specification;
-        raw_type_specification_stream >> raw_type_specification;
+        raw_type_specification_stream >> std::ws >> raw_type_specification;
         return parse_type_specification(raw_type_specification, delimiter);
     }
 
     record_t parse_raw_record(std::istream &raw_data_stream, char delimiter = ';') {
         std::string temp_record_string;
-        raw_data_stream >> temp_record_string;
+        raw_data_stream >> std::ws >> temp_record_string;
         return parse_raw_record(temp_record_string, delimiter);
     }
 
@@ -109,7 +111,7 @@ private:
 
     static std::size_t parse_raw_records_number(std::istream &raw_records_number_stream) {
         std::string records_number_temp;
-        raw_records_number_stream >> records_number_temp;
+        raw_records_number_stream >> std::ws >> records_number_temp;
         return std::stoi(records_number_temp);
     }
 
@@ -164,42 +166,42 @@ private:
 public:
     DataAggregator() = default;
 
-    DataAggregator(const std::string &header, const std::string &type_specification, std::size_t records_number,
-                   const raw_data_t &data,
-                   std::string query) : table_header{DataAggregator::parse_table_header(header)},
-                                        type_specification{
-                                                DataAggregator::parse_type_specification(type_specification)},
-                                        records_number{records_number},
-                                        table_data{DataAggregator::parse_raw_data(data)},
-                                        raw_query{std::move(query)} {
-        /**
-         * Initialization done by ctor member initialization.
-         * No need to do anything else, data load will be covered elsewhere.
-         * TODO: Specify where.
-         * */
-    }
+//    DataAggregator(const std::string &header, const std::string &type_specification, std::size_t records_number,
+//                   const raw_data_t &data,
+//                   std::string query) : table_header{DataAggregator::parse_table_header(header)},
+//                                        type_specification{
+//                                                DataAggregator::parse_type_specification(type_specification)},
+//                                        records_number{records_number},
+//                                        table_data{DataAggregator::parse_raw_data(data)},
+//                                        raw_query{std::move(query)} {
+//        /**
+//         * Initialization done by ctor member initialization.
+//         * No need to do anything else, data load will be covered elsewhere.
+//         * TODO: Specify where.
+//         * */
+//    }
 
-    DataAggregator(const DataAggregator &dataAggregator) : table_header{dataAggregator.table_header},
-                                                           type_specification{dataAggregator.type_specification},
-                                                           records_number{dataAggregator.records_number},
-                                                           table_data{dataAggregator.table_data},
-                                                           raw_query{dataAggregator.raw_query} {
-        /**
-         * Copy ctor.
-         * No other operation is required.
-         * */
-    }
+//    DataAggregator(const DataAggregator &dataAggregator) : table_header{dataAggregator.table_header},
+//                                                           type_specification{dataAggregator.type_specification},
+//                                                           records_number{dataAggregator.records_number},
+//                                                           table_data{dataAggregator.table_data},
+//                                                           raw_query{dataAggregator.raw_query} {
+//        /**
+//         * Copy ctor.
+//         * No other operation is required.
+//         * */
+//    }
 
-    DataAggregator(DataAggregator &&dataAggregator) : table_header{std::move(dataAggregator.table_header)},
-                                                      type_specification{std::move(dataAggregator.type_specification)},
-                                                      records_number{dataAggregator.records_number},
-                                                      table_data{std::move(dataAggregator.table_data)},
-                                                      raw_query{std::move(dataAggregator.raw_query)} {
-        /**
-         * Move ctor.
-         * No other operation is required.
-         * */
-    }
+//    DataAggregator(DataAggregator &&dataAggregator) : table_header{std::move(dataAggregator.table_header)},
+//                                                      type_specification{std::move(dataAggregator.type_specification)},
+//                                                      records_number{dataAggregator.records_number},
+//                                                      table_data{std::move(dataAggregator.table_data)},
+//                                                      raw_query{std::move(dataAggregator.raw_query)} {
+//        /**
+//         * Move ctor.
+//         * No other operation is required.
+//         * */
+//    }
 
     // No dynamic allocation, default should do fine
     ~DataAggregator() = default;
