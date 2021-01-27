@@ -1,0 +1,16 @@
+//
+// Created by mkyjovsky01 on 12/12/2020.
+//
+
+#ifndef RECODEX_ASSIGNMENT_01_DATA_AGGREGATOR_HPP
+#define RECODEX_ASSIGNMENT_01_DATA_AGGREGATOR_HPP
+
+
+
+class DataAggregator {
+
+};
+
+
+
+#endif //RECODEX_ASSIGNMENT_01_DATA_AGGREGATOR_HPP
